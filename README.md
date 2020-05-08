@@ -1,5 +1,7 @@
 # SSLPoke
 
+![Java CI with Maven](https://github.com/klasen/sslpoke/workflows/Java%20CI%20with%20Maven/badge.svg)
+
 Test establishment of a HTTPS (TLS) connection to a host with Java.
 
 This version has been enhanced to print all known system and security properties relevant to HTTPS.
