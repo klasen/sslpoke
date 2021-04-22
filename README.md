@@ -2,9 +2,9 @@
 
 ![Java CI with Maven](https://github.com/klasen/sslpoke/workflows/Java%20CI%20with%20Maven/badge.svg)
 
-Test establishment of a HTTPS (TLS) connection to a host with Java.
+Test establishment of a TLS connection to a host with Java.
 
-This version has been enhanced to print all known system and security properties relevant to HTTPS.
+This version has been enhanced to print all known system and security properties relevant to TLS and HTTPS.
 
 ## Usage:
 
@@ -74,7 +74,6 @@ java -jar sslpoke.jar wrong.host.badssl.com 443
 java -jar sslpoke.jar self-signed.badssl.com 443
 java -jar sslpoke.jar untrusted-root.badssl.com 443
 java -jar sslpoke.jar revoked.badssl.com 443
-java -jar sslpoke.jar pinning-test.badssl.com 443
 java -jar sslpoke.jar cbc.badssl.com 443
 java -jar sslpoke.jar rc4-md5.badssl.com 443
 java -jar sslpoke.jar rc4.badssl.com 443
