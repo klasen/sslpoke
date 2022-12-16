@@ -152,6 +152,8 @@ public class SSLPoke {
             "com.sun.security.crl.timeout",
             "com.sun.security.enableAIAcaIssuers",
             "com.sun.security.enableCRLDP",
+            // https://www.oracle.com/java/technologies/javase/8u271-relnotes.html#JDK-8237990
+            "jdk.jndi.ldap.mechsAllowedToSendCredentials",
     };
 
     static SSLSession connect(final String host, final int port) throws UnknownHostException, IOException {
