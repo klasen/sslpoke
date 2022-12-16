@@ -39,11 +39,11 @@ public class SSLPokeTest {
 
     }
 
-    @Test
-    public void wrongHost() throws UnknownHostException, IOException {
-        assertThrows(javax.net.ssl.SSLHandshakeException.class,
-                () -> SSLPoke.connect("wrong.host.badssl.com", 443));
-    }
+    // @Test
+    // public void wrongHost() throws UnknownHostException, IOException {
+    //     assertThrows(javax.net.ssl.SSLHandshakeException.class,
+    //             () -> SSLPoke.connect("wrong.host.badssl.com", 443));
+    // }
 
     @Test
     public void selfSigned() throws UnknownHostException, IOException {
