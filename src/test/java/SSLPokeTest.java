@@ -57,12 +57,12 @@ public class SSLPokeTest {
                 () -> SSLPoke.connect("untrusted-root.badssl.com", 443));
     }
 
-    @Test
-    @SetSystemProperty(key = "jdk.tls.client.protocols", value = "SSLv3")
-    public void sslV3() throws UnknownHostException, IOException {
-        assertThrows(javax.net.ssl.SSLHandshakeException.class,
-                () -> SSLPoke.connect("www.badssl.com", 443));
-    }
+    // @Test
+    // @SetSystemProperty(key = "jdk.tls.client.protocols", value = "SSLv3")
+    // public void sslV3() throws UnknownHostException, IOException {
+    //     assertThrows(javax.net.ssl.SSLHandshakeException.class,
+    //             () -> SSLPoke.connect("www.badssl.com", 443));
+    // }
 
     // https://github.com/chromium/badssl.com/issues/515
     // @Test
