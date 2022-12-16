@@ -43,10 +43,10 @@ public class SSLPoke {
             "java.security.debug", "javax.net.debug" };
 
     static SSLSession connect(final String host, final int port) throws UnknownHostException, IOException {
-        final SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-        final SSLSocket sslsocket = (SSLSocket) sslsocketfactory.createSocket(host, port);
+        SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+        SSLSocket sslsocket = (SSLSocket) sslsocketfactory.createSocket(host, port);
 
-        final SSLParameters sslparams = new SSLParameters();
+        SSLParameters sslparams = new SSLParameters();
         sslsocket.setSSLParameters(sslparams);
 
         sslparams.setEndpointIdentificationAlgorithm("HTTPS");
@@ -57,8 +57,8 @@ public class SSLPoke {
         serverNames.add(serverName);
         sslparams.setServerNames(serverNames);
 
-        final InputStream in = sslsocket.getInputStream();
-        final OutputStream out = sslsocket.getOutputStream();
+        InputStream in = sslsocket.getInputStream();
+        OutputStream out = sslsocket.getOutputStream();
 
         // Write a test byte to get a reaction :)
         out.write(1);
@@ -80,6 +80,8 @@ public class SSLPoke {
 
         // System.setProperty("java.security.debug", "certpath");
         // System.setProperty("javax.net.debug", "ssl");
+        // System.setProperty("com.sun.net.ssl.checkRevocation", "true");
+        // System.setProperty("com.sun.security.enableCRLDP", "true");
 
         System.out
                 .println("connecting to " + host + ":" + port + " with the following system and security properties:");
