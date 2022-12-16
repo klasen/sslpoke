@@ -28,39 +28,39 @@ public class SSLPokeTest {
     @Test
     public void unknownHost() throws UnknownHostException, IOException {
 
-        Exception exception = assertThrows(java.net.UnknownHostException.class,
+        assertThrows(java.net.UnknownHostException.class,
                 () -> SSLPoke.connect("host.invalid", 443));
     }
 
     @Test
     public void expired() throws UnknownHostException, IOException {
-        Exception exception = assertThrows(javax.net.ssl.SSLHandshakeException.class,
+        assertThrows(javax.net.ssl.SSLHandshakeException.class,
                 () -> SSLPoke.connect("expired.badssl.com", 443));
 
     }
 
     @Test
     public void wrongHost() throws UnknownHostException, IOException {
-        Exception exception = assertThrows(javax.net.ssl.SSLHandshakeException.class,
+        assertThrows(javax.net.ssl.SSLHandshakeException.class,
                 () -> SSLPoke.connect("wrong.host.badssl.com", 443));
     }
 
     @Test
     public void selfSigned() throws UnknownHostException, IOException {
-        Exception exception = assertThrows(javax.net.ssl.SSLHandshakeException.class,
+        assertThrows(javax.net.ssl.SSLHandshakeException.class,
                 () -> SSLPoke.connect("self-signed.badssl.com", 443));
     }
 
     @Test
     public void untrustedRoot() throws UnknownHostException, IOException {
-        Exception exception = assertThrows(javax.net.ssl.SSLHandshakeException.class,
+        assertThrows(javax.net.ssl.SSLHandshakeException.class,
                 () -> SSLPoke.connect("untrusted-root.badssl.com", 443));
     }
 
     @Test
     @SetSystemProperty(key = "jdk.tls.client.protocols", value = "SSLv3")
     public void sslV3() throws UnknownHostException, IOException {
-        Exception exception = assertThrows(javax.net.ssl.SSLHandshakeException.class,
+        assertThrows(javax.net.ssl.SSLHandshakeException.class,
                 () -> SSLPoke.connect("www.badssl.com", 443));
     }
 
