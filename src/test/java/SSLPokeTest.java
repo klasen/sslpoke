@@ -64,20 +64,21 @@ public class SSLPokeTest {
                 () -> SSLPoke.connect("www.badssl.com", 443));
     }
 
-    @Test
-    @SetSystemProperty(key = "com.sun.net.ssl.checkRevocation", value = "false")
-    @SetSystemProperty(key = "com.sun.security.enableCRLDP", value = "true")
-    public void ignoreRevocation() throws UnknownHostException, IOException {
-        assertNotNull(SSLPoke.connect("revoked.badssl.com", 443));
-    }
+    // https://github.com/chromium/badssl.com/issues/515
+    // @Test
+    // @SetSystemProperty(key = "com.sun.net.ssl.checkRevocation", value = "false")
+    // @SetSystemProperty(key = "com.sun.security.enableCRLDP", value = "true")
+    // public void ignoreRevocation() throws UnknownHostException, IOException {
+    //     assertNotNull(SSLPoke.connect("revoked.badssl.com", 443));
+    // }
 
-    @Test
-    @SetSystemProperty(key = "com.sun.net.ssl.checkRevocation", value = "true")
-    @SetSystemProperty(key = "com.sun.security.enableCRLDP", value = "true")
-    public void revoked() throws UnknownHostException, IOException {
-        assertEquals("true", System.getProperty("com.sun.net.ssl.checkRevocation"));
-        Exception exception = assertThrows(javax.net.ssl.SSLHandshakeException.class,
-                () -> SSLPoke.connect("revoked.badssl.com", 443));
-        assertTrue(exception.getMessage().contains("Certificate has been revoked"));
-    }
+    // @Test
+    // @SetSystemProperty(key = "com.sun.net.ssl.checkRevocation", value = "true")
+    // @SetSystemProperty(key = "com.sun.security.enableCRLDP", value = "true")
+    // public void revoked() throws UnknownHostException, IOException {
+    //     assertEquals("true", System.getProperty("com.sun.net.ssl.checkRevocation"));
+    //     Exception exception = assertThrows(javax.net.ssl.SSLHandshakeException.class,
+    //             () -> SSLPoke.connect("revoked.badssl.com", 443));
+    //     assertTrue(exception.getMessage().contains("Certificate has been revoked"));
+    // }
 }
