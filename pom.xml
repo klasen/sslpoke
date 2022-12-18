@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.norbertklasen.security</groupId>
     <artifactId>sslpoke</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -193,4 +193,17 @@
         <url>https://github.com/klasen/sslpoke/issues</url>
         <system>GitHub</system>
     </issueManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/klasen/sslpoke</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </distributionManagement>
 </project>
