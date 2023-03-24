@@ -12,6 +12,8 @@ import org.junitpioneer.jupiter.SetSystemProperty;
 /**
  * Unit test.
  */
+@SetSystemProperty(key = "com.sun.net.ssl.checkRevocation", value = "true")
+@SetSystemProperty(key = "com.sun.security.enableCRLDP", value = "true")
 public class SSLPokeTest {
     /**
      * Rigorous Test.
@@ -41,8 +43,8 @@ public class SSLPokeTest {
 
     // @Test
     // public void wrongHost() throws UnknownHostException, IOException {
-    //     assertThrows(javax.net.ssl.SSLHandshakeException.class,
-    //             () -> SSLPoke.connect("wrong.host.badssl.com", 443));
+    // assertThrows(javax.net.ssl.SSLHandshakeException.class,
+    // () -> SSLPoke.connect("wrong.host.badssl.com", 443));
     // }
 
     @Test
@@ -60,25 +62,22 @@ public class SSLPokeTest {
     // @Test
     // @SetSystemProperty(key = "jdk.tls.client.protocols", value = "SSLv3")
     // public void sslV3() throws UnknownHostException, IOException {
-    //     assertThrows(javax.net.ssl.SSLHandshakeException.class,
-    //             () -> SSLPoke.connect("www.badssl.com", 443));
+    // assertThrows(javax.net.ssl.SSLHandshakeException.class,
+    // () -> SSLPoke.connect("www.badssl.com", 443));
     // }
 
-    // https://github.com/chromium/badssl.com/issues/515
     // @Test
     // @SetSystemProperty(key = "com.sun.net.ssl.checkRevocation", value = "false")
-    // @SetSystemProperty(key = "com.sun.security.enableCRLDP", value = "true")
     // public void ignoreRevocation() throws UnknownHostException, IOException {
-    //     assertNotNull(SSLPoke.connect("revoked.badssl.com", 443));
+    // assertNotNull(SSLPoke.connect("revoked-rsa-dv.ssl.com", 443));
     // }
 
-    // @Test
-    // @SetSystemProperty(key = "com.sun.net.ssl.checkRevocation", value = "true")
-    // @SetSystemProperty(key = "com.sun.security.enableCRLDP", value = "true")
-    // public void revoked() throws UnknownHostException, IOException {
-    //     assertEquals("true", System.getProperty("com.sun.net.ssl.checkRevocation"));
-    //     Exception exception = assertThrows(javax.net.ssl.SSLHandshakeException.class,
-    //             () -> SSLPoke.connect("revoked.badssl.com", 443));
-    //     assertTrue(exception.getMessage().contains("Certificate has been revoked"));
-    // }
+    @Test
+    public void revoked() throws UnknownHostException, IOException {
+        assertEquals("true", System.getProperty("com.sun.net.ssl.checkRevocation"));
+        assertEquals("true", System.getProperty("com.sun.security.enableCRLDP"));
+        Exception exception = assertThrows(javax.net.ssl.SSLHandshakeException.class,
+                () -> SSLPoke.connect("revoked-rsa-dv.ssl.com", 443));
+        assertTrue(exception.getMessage().contains("Certificate has been revoked"));
+    }
 }
