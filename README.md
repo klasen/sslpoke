@@ -192,15 +192,15 @@ So far, I've come across the following parameters that seem relevant:
 
 ## Troubleshooting
 
-To get increase the log level, set the following properties:
+To get more detailed logs, set the following properties:
 
 - java.security.debug
   - <https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html#Debug>
   - <https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/ReadDebug.html>
-  - suggested option: `-Djavax.net.debug=ssl`
+  - suggested option: `-Djavax.net.debug=ssl,trustmanager,handshake`
 - javax.net.debug
   - <https://docs.oracle.com/javase/8/docs/technotes/guides/security/troubleshooting-security.html>
-  - suggested option: `-Djava.security.debug=certpath`
+  - suggested option: `-Djava.security.debug=properties,certpath`
 
 ## Servers
 
