@@ -15,21 +15,14 @@ import org.junitpioneer.jupiter.SetSystemProperty;
 @SetSystemProperty(key = "com.sun.net.ssl.checkRevocation", value = "true")
 @SetSystemProperty(key = "com.sun.security.enableCRLDP", value = "true")
 public class SSLPokeTest {
-    /**
-     * Rigorous Test.
-     * 
-     * @throws IOException
-     * @throws UnknownHostException
-     */
     @Test
-    public void wwwGithubCom() throws UnknownHostException, IOException {
-        Object result = SSLPoke.connect("www.github.com", 443);
+    public void certificateWithCrlDp() throws UnknownHostException, IOException {
+        Object result = SSLPoke.connect("www.microsoft.com", 443);
         assertNotNull(result);
     }
 
     @Test
     public void unknownHost() throws UnknownHostException, IOException {
-
         assertThrows(java.net.UnknownHostException.class,
                 () -> SSLPoke.connect("host.invalid", 443));
     }
