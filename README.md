@@ -138,6 +138,8 @@ The properties that influence the network, TLS protocol, certificate verificatio
 - Java Secure Socket Extension (JSSE) Reference Guide ([Java 8](https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html#InstallationAndCustomization), [Java 11](https://docs.oracle.com/en/java/javase/11/security/java-secure-socket-extension-jsse-reference-guide.html#GUID-93DEEE16-0B70-40E5-BBE7-55C3FD432345))
 - [Java PKI Programmer's Guide](https://docs.oracle.com/javase/8/docs/technotes/guides/security/certpath/CertPathProgGuide.html)
 - [Networking Properties](https://docs.oracle.com/javase/8/docs/api/java/net/doc-files/net-properties.html)
+- [Additional information on Oracle's JDK and JRE Cryptographic Algorithms](https://www.java.com/en/configure_crypto.html)
+- [Oracle JRE and JDK Cryptographic Roadmap](https://www.java.com/en/jre-jdk-cryptoroadmap.html)
 
 So far, I've come across the following parameters that seem relevant:
 
