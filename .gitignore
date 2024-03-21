@@ -25,3 +25,7 @@ buildNumber.properties
 .classpath
 .project
 .vscode/
+
+# secrets
+*.p12
+*.jks
