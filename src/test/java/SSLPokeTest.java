@@ -34,11 +34,11 @@ public class SSLPokeTest {
 
     }
 
-    // @Test
-    // public void wrongHost() throws UnknownHostException, IOException {
-    // assertThrows(javax.net.ssl.SSLHandshakeException.class,
-    // () -> SSLPoke.connect("wrong.host.badssl.com", 443));
-    // }
+    @Test
+    public void wrongHost() throws UnknownHostException, IOException {
+        assertThrows(javax.net.ssl.SSLHandshakeException.class,
+                () -> SSLPoke.connect("wrong.host.badssl.com", 443));
+    }
 
     @Test
     public void selfSigned() throws UnknownHostException, IOException {
@@ -52,19 +52,6 @@ public class SSLPokeTest {
                 () -> SSLPoke.connect("untrusted-root.badssl.com", 443));
     }
 
-    // @Test
-    // @SetSystemProperty(key = "jdk.tls.client.protocols", value = "SSLv3")
-    // public void sslV3() throws UnknownHostException, IOException {
-    // assertThrows(javax.net.ssl.SSLHandshakeException.class,
-    // () -> SSLPoke.connect("www.badssl.com", 443));
-    // }
-
-    // @Test
-    // @SetSystemProperty(key = "com.sun.net.ssl.checkRevocation", value = "false")
-    // public void ignoreRevocation() throws UnknownHostException, IOException {
-    // assertNotNull(SSLPoke.connect("revoked-rsa-dv.ssl.com", 443));
-    // }
-
     @Test
     public void revoked() throws UnknownHostException, IOException {
         assertEquals("true", System.getProperty("com.sun.net.ssl.checkRevocation"));
@@ -73,4 +60,5 @@ public class SSLPokeTest {
                 () -> SSLPoke.connect("revoked-rsa-dv.ssl.com", 443));
         assertTrue(exception.getMessage().contains("Certificate has been revoked"));
     }
+
 }
