@@ -196,6 +196,9 @@ So far, I've come across the following parameters that seem relevant:
 
 To get more detailed logs, set the following properties:
 
+- showSettings
+  - <https://docs.oracle.com/en/java/javase/21/docs/specs/man/java.html#extra-options-for-java>
+  - suggested option: `-XshowSettings:security:all`
 - java.security.debug
   - <https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html#Debug>
   - <https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/ReadDebug.html>
