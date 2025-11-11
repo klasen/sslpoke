@@ -207,6 +207,11 @@ To get more detailed logs, set the following properties:
   - <https://docs.oracle.com/javase/8/docs/technotes/guides/security/troubleshooting-security.html>
   - suggested option: `-Djava.security.debug=properties,certpath`
 
+Combined:
+```sh
+-XshowSettings:security:all -Djavax.net.debug=ssl,trustmanager,handshake -Djava.security.debug=properties,certpath
+```
+
 ## Servers
 
 To see the protocols and ciphers supported by the server you are trying to connect to you can use tools such as [Qualys SSL Labs](https://www.ssllabs.com/ssltest/) if the server is publicly available or [sslscan](https://www.ssllabs.com/ssltest/) if you are in a private network.
